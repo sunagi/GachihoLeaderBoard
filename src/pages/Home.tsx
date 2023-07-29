@@ -4,8 +4,6 @@ import Card from '../components/Card'
 import Footer from '../components/Footer'
 
 function App() {
-  const footerInfo = [{
-  }]
   return (
     <div className="App">
       <h1 style={{ "color": "#00CCFF", "fontFamily": "-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif" }}>Gachiho Leader Board</h1>
@@ -17,7 +15,6 @@ function App() {
           border: "none",
         }}
       />
-      <Footer links={footerInfo} />
     </div>
   )
 }
