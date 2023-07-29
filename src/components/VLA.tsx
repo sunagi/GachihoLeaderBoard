@@ -5,6 +5,18 @@ import IdentityScore from './IdentityScore';
 import Grid from '@mui/material/Grid';
 import Rank from './Rank';
 
+// Add type for holder
+type Holder = {
+  id: string;
+  tokenCount: number;
+};
+
+// Add type for token
+type Token = {
+  id: string;
+  acquisitionTime: number;
+};
+
 const client = new ApolloClient({
     uri: "https://api.thegraph.com/subgraphs/name/sunagi/verylonganimals",
     cache: new InMemoryCache(),
@@ -18,7 +30,7 @@ const TOP_HOLDERS = gql`
   }
   `;
   
-  const HOLDER_TOKENS = gql`
+const HOLDER_TOKENS = gql`
   query HolderTokens($id: ID!) {
     holder(id: $id) {
       id
@@ -41,14 +53,14 @@ export default function VLALeaderBoard() {
     return (
       <div>
         <h2>Top 10 Holders by NFT Count</h2>
-        {topHolders.map((holder, index) => (
+        {topHolders.map((holder: Holder, index: number) => (
           <HolderRanking key={holder.id} rank={index + 1} holderId={holder.id} />
         ))}
       </div>
     );
   }
   
-  function HolderRanking({ rank, holderId }) {
+  function HolderRanking({ rank, holderId }: { rank: number; holderId: string; }) {
     const { loading, error, data } = useQuery(HOLDER_TOKENS, {
       variables: { id: holderId },
     });
@@ -58,7 +70,7 @@ export default function VLALeaderBoard() {
   
     const holder = data.holder;
     const currentTime = Date.now() / 3600000;
-    const totalHoldingTime = holder.tokens.reduce((sum, token) => sum + (currentTime - token.acquisitionTime), 0);
+    const totalHoldingTime = holder.tokens.reduce((sum: number, token: Token) => sum + (currentTime - token.acquisitionTime), 0);
   
     return (
       <div>
