@@ -1,7 +1,6 @@
 import '../App.css'
 import VLA from '../pictures/VLA.png'
 import Card from '../components/Card'
-import Footer from '../components/Footer'
 
 function App() {
   return (

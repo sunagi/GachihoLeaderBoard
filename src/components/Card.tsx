@@ -1,5 +1,4 @@
 import { ActionIcon, Avatar, Badge, Card, Center, createStyles, Group, Image, Text } from "@mantine/core";
-import { IconHeart } from "@tabler/icons";
 import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
