@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "build-gh": "tsc && GITHUB_PAGES=1 vite build",
     "preview": "vite preview"
   },
